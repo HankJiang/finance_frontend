@@ -4,6 +4,6 @@ console.log(baseURL);
 
 export const request = require('axios').create({
     baseURL: baseURL,
-    timeout: 60000,
+    timeout: 600000,
     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
 });
