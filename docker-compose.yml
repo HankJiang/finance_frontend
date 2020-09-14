@@ -7,5 +7,7 @@ services:
     restart: always
     environment:
       NODE_ENV: production
+    volumes:
+      - /data/stone/finance_backend/node_modules:/node_modules
     ports:
       - '9002:80'
