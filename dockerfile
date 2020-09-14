@@ -8,6 +8,7 @@ ADD . /code
 
 RUN npm install --production
 RUN npm install -g node-sass
+RUN npm rebuild node-sass --force
 RUN npm audit fix
 RUN npm run build
 RUN npm install -g http-server
