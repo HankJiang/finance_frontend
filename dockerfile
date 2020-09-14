@@ -9,6 +9,7 @@ ADD . /code
 RUN npm config set registry https://registry.npm.taobao.org
 RUN npm install --production
 RUN npm install -g serve
+RUN npm install node-sass
 RUN npm rebuild node-sass
 RUN npm run build
 
