@@ -4,8 +4,8 @@ WORKDIR '/app'
 COPY package.json .
 
 RUN npm config set registry https://registry.npm.taobao.org
+RUN npm install node-sass && npm rebuild node-sass
 RUN npm install
-RUN npm rebuild node-sass
 COPY . .
 
 RUN npm run build
