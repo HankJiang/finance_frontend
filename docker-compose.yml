@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    image: finance_frontend:demo
+    build: ./
+    restart: alwaysc
+    ports:
+      - '9002:9002'
