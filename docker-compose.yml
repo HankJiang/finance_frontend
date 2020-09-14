@@ -6,7 +6,6 @@ services:
     build: ./
     restart: always
     environment:
-      PROJECT_ENV: production
       NODE_ENV: production
     ports:
       - '9002:80'
