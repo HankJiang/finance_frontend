@@ -1,14 +1,15 @@
-FROM node:12.6.0-buster-slim
-
-ENV PROJECT_ENV production
-ENV NODE_ENV production
-
-WORKDIR /code
-ADD . /code
+# 构建阶段
+FROM node:alpine as builder
+WORKDIR '/app'
+COPY package.json .
 
 RUN npm config set registry https://registry.npm.taobao.org
-RUN npm install -g serve
+RUN npm install
 RUN npm rebuild node-sass
-RUN npm install --production
+COPY . .
 
-CMD serve -s build -l 0.0.0.0 -p 9002
+RUN npm run build
+
+# 运行阶段
+FROM nginx
+COPY --from=builder /app/build /usr/share/nginx/html
