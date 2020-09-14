@@ -11,4 +11,4 @@ RUN npm install -g serve
 RUN npm rebuild node-sass
 RUN npm install --production
 
-CMD serve -s build -h 0.0.0.0 -p 9002
+CMD serve -s build -l 0.0.0.0 -p 9002
