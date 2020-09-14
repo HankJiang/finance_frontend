@@ -7,10 +7,8 @@ WORKDIR /code
 ADD . /code
 
 RUN npm install --production
-RUN npm install -g node-sass
-RUN npm rebuild node-sass --force
-RUN npm audit fix
+RUN npm install -g serve
+RUN npm rebuild node-sass
 RUN npm run build
-RUN npm install -g http-server
 
-CMD http-server ./public -p 9002
+CMD serve -s build -p 9002
