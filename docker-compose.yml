@@ -4,6 +4,6 @@ services:
   app:
     image: finance_frontend:demo
     build: ./
-    restart: alwaysc
+    restart: always
     ports:
       - '9002:9002'
