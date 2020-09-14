@@ -1,5 +1,5 @@
 # 构建阶段
-FROM node:12.6.0-buster-slim as builder
+FROM node:alpine as builder
 WORKDIR '/app'
 COPY package.json .
 
