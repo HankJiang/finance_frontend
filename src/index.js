@@ -9,12 +9,12 @@ import Home from './views/home'
 
 ReactDOM.render(
     <Fragment>
-        <HashRouter basename="/finance">
+        <HashRouter>
             <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/home" component={Home} />
-                <Route exact path="/" component={Home} />
-                <Redirect to={"/home"} />
+                <Route path="/finance/login" component={Login} />
+                <Route path="/finance/home" component={Home} />
+                <Route exact path="/finance" component={Home} />
+                <Redirect to={"/finance/home"} />
             </Switch>
         </HashRouter>
     </Fragment>,
