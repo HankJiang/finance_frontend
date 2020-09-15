@@ -25,6 +25,9 @@ class Home extends Component {
     render() {
         return (
             <div className={'P-home'}>
+
+                <p>test</p>
+
                 <Stock code={this.state.stock_code} start={this.state.start_date} end={this.state.end_date}/>
                 <div className={'P-input_block'}>
                     <TextField id="stock_code" label="请输入6位股票代码" value={this.state.stock_code} onChange={e=>{this.setState({stock_code: e.target.value})}}/>
