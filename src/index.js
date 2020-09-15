@@ -11,10 +11,10 @@ ReactDOM.render(
     <Fragment>
         <HashRouter>
             <Switch>
-                <Route path="/finance/login" component={Login} />
-                <Route path="/finance/home" component={Home} />
-                <Route exact path="/finance" component={Home} />
-                <Redirect to={"/finance/home"} />
+                <Route path="/login" component={Login} />
+                <Route path="/home" component={Home} />
+                <Route exact path="/" component={Home} />
+                <Redirect to={"/home"} />
             </Switch>
         </HashRouter>
     </Fragment>,
