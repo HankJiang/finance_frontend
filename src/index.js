@@ -9,7 +9,7 @@ import Home from './views/home'
 
 ReactDOM.render(
     <Fragment>
-        <HashRouter>
+        <HashRouter basename="/finance">
             <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/home" component={Home} />
