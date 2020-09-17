@@ -2,6 +2,7 @@ import React from "react";
 
 import Candlestick from './ecarts/Candlestick'
 import { request } from '../request'
+import moment from "moment"
 
 export default class Stock extends React.Component {
     constructor(props) {
@@ -24,33 +25,24 @@ export default class Stock extends React.Component {
     }
 
     getStockData = (code, start, end) => {
-        request.get('/stock/kline', {params: {code: code, start: start, end: end}})
+        request.get(`/stock/${code}/history`, {params: {start: start, end: end}})
             .then((resp) => {
                 this.setState({data: this.splitData(resp.data),});
             }).catch((resp) => {});
     };
 
 
-    // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
-    // {
-    //     "Adj Close": 7.2300000191,
-    //     "Close": 7.2300000191,
-    //     "Date": "2020-08-03T00:00:00.000Z",
-    //     "High": 7.2800002098,
-    //     "Low": 7.1500000954,
-    //     "Open": 7.1500000954,
-    //     "Volume": 28438819
-    // }
     splitData = (rawData) => {
-        let categoryData = [];
+        let category_data = [];
         let values = [];
         for (let i = 0; i < rawData.length; i++) {
-            let dayData = rawData[i];
-            categoryData.push(dayData.Date.split('T')[0].replace('-', '/').replace('-', '/'));
-            values.push([dayData.Open, dayData.Close, dayData.Low, dayData.High])
+            let day_data = rawData[i];
+            let date = moment(day_data.trade_date, 'YYYYMMDD').format('YYYY/MM/DD'); // 20200101 => 2020/01/01
+            category_data.push(date);
+            values.push([day_data.open, day_data.close, day_data.low, day_data.high])
         }
         return {
-            categoryData: categoryData,
+            categoryData: category_data,
             values: values
         };
     };
